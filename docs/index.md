@@ -68,4 +68,9 @@ Ready to start building beautiful reports? Jump into the guides:
 *   **[🧪 Developer Lab / API](configuration-api.md)**: Explore the settings and deep debugging modes.
 
 ---
+!!! info "Support the Creator"
+    Developing KritiDocX required rigorous testing and complex architectural planning. If you find this tool useful, please consider [supporting the project on Ko-fi](https://ko-fi.com/kritidocx). Every bit of support counts!
+
+
+---
 *Created with ❤️ by the KritiDocX Team & Google AI Studio.*

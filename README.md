@@ -1,4 +1,4 @@
-# 🚀 KritiDocX Engine 3.0
+# 🚀 KritiDocX Engine 1.0
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/Status-Industrial%20Grade-success)](https://github.com/)
@@ -223,5 +223,12 @@ Contributions, issues, and feature requests are welcome!
 
 **Author:** KritiDocX Team
 **Created with:** Passion, Curiosity, and Google AI Studio.
+
+---
+
+## ❤️ Support the Project
+**KritiDocX** is an open-source project built with passion and hundreds of hours of AI-orchestration. If this library saved your time or helped your business, consider buying me a tea! Your support helps keep the engine running and fuels the development of future features.
+
+[![Support me on Ko-fi](https://img.shields.io/badge/Support%20me%20on%20Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/kritidocx)
 
 ---

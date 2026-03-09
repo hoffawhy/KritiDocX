@@ -35,6 +35,7 @@ examples/
 tool/
 build/
 dist/
+site/
 # लेकिन अगर आपने कोई 'template.docx' रखा है जो प्रोजेक्ट का हिस्सा है, 
 # तो ऊपर वाली लाइन हटा कर specific exclude कर सकते हैं।
 
