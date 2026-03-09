@@ -1,0 +1,24 @@
+include README.md
+include LICENSE
+include requirements.txt
+
+# एसेट्स डायरेक्टरी को पूरा शामिल करें
+recursive-include kritidocx/assets *
+
+# यदि आपके पास कोई डिफ़ॉल्ट HTML टेम्प्लेट है
+recursive-include kritidocx/inputs/html *
+
+# यह सुनिश्चित करने के लिए कि XSL फाइल छूट न जाए
+recursive-include kritidocx/assets/templates *.XSL
+recursive-include kritidocx/assets/images *.png *.jpg
+
+# जंक सफाई
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .DS_Store
+
+# यह सुनिश्चित करें कि Examples बिल्ड में न जाएं
+prune examples
+prune inputs
+prune output
+prune tests

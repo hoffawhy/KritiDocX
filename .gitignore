@@ -1,0 +1,60 @@
+# --- Python Specific ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Project Specific Artifacts (ये फाइल्स आपके PC पर रहेंगी, GitHub पर नहीं) ---
+output/
+logs/
+temp_cache/
+debug_dump.xml
+*.docx
+*.xml
+ai_json/
+examples/
+tool/
+build/
+dist/
+# लेकिन अगर आपने कोई 'template.docx' रखा है जो प्रोजेक्ट का हिस्सा है, 
+# तो ऊपर वाली लाइन हटा कर specific exclude कर सकते हैं।
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# --- Environment Secrets ---
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- AI & Meta files ---
+ai_request.json
+files_context.txt
+project_map.txt
+project_packer.py
+
+# (इन्हें हमने सिर्फ कोडिंग में मदद के लिए बनाया था, public करने की जरुरत नहीं है)

@@ -1,0 +1,8 @@
+python-docx
+beautifulsoup4
+lxml
+pillow
+requests
+markdown
+psutil
+latex2mathml

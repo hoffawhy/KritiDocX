@@ -1,0 +1,77 @@
+# 🌐 साइट की मूल जानकारी (Basic Site Information)
+site_name: KritiDocX
+site_description: An industrial-grade HTML & Markdown to Word compiler.
+site_author: KritiDocX Team
+repo_name: kritidocx/KritiDocX
+# यहाँ अपने GitHub रिपॉजिटरी का असली लिंक डालें ताकि वेबसाइट के कोने में Github आइकॉन दिखे
+repo_url: https://github.com/your-username/KritiDocX  
+
+# 🎨 थीम और डिज़ाइन सेटिंग्स (Theme and Design)
+# हम 'Material' थीम इस्तेमाल कर रहे हैं जो बेहद लोकप्रिय और खूबसूरत है।
+theme:
+  name: material
+  
+  # ब्रांडिंग रंग (आप इन्हें बदल सकते हैं)
+  palette:
+    # 🌞 Light Mode (दिन के लिए)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom      # हमने CSS में जो 'Corporate Blue (#2E74B5)' इस्तेमाल किया है
+      accent: deep orange  # बटनों और लिंक्स के लिए हाईलाइट कलर
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # 🌙 Dark Mode (रात के लिए - टॉगल बटन के साथ)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  
+  # UI फीचर्स (सर्च और बटन्स)
+  features:
+    - search.suggest        # टाइप करते हुए सुझाव देना
+    - search.highlight      # सर्च रिजल्ट्स को पीले रंग से हाईलाइट करना
+    - content.code.copy     # हर कोड-ब्लॉक के कोने में "Copy" बटन जोड़ना
+    - navigation.tabs       # (वैकल्पिक) ऊपर भी मेनू टैब्स दिखाना
+
+# 🚀 मार्कडाउन एक्सटेंशन (अधिक ताक़त के लिए)
+# ये सेटिंग्स सुनिश्चित करती हैं कि आपने फाइलों में जो admonitions (जैसे !!! info, !!! tip) 
+# और Math Formulas ($$ $$) इस्तेमाल किए हैं, वो खूबसूरत दिखें।
+markdown_extensions:
+  - admonition
+  - def_list
+  - pymdownx.details      # 'Show more' टॉगल बॉक्स के लिए
+  - pymdownx.highlight:   # सिंटैक्स हाइलाइटिंग
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences  # 'Title' वाले कोड ब्लॉक्स (जैसे title="run.py") के लिए
+  - pymdownx.arithmatex:  # 🧮 Math रेंडरिंग (डॉक्यूमेंटेशन साइट पर फॉर्मूले साफ़ दिखने के लिए)
+      generic: true
+
+# 🔌 अतिरिक्त प्लगिन्स
+plugins:
+  - search # साइट के अंदर सर्च सुविधा चालू करना
+
+# 🧭 साइट नेविगेशन मेन्यू (Side Bar Navigation)
+# यह आपकी वेबसाइट के पेजों का क्रम है (उसी हिसाब से जैसे हमने फाइल्स लिखी थीं)
+nav:
+  - Welcome (Home): index.md
+  - Installation & Basics: getting-started.md
+  
+  - 💎 Core Features:
+    - The Hybrid Template Engine: hybrid-mode.md
+    - Tables & The Matrix Logic: tables-matrix.md
+    - Native Scientific Math (OMML): scientific-math.md
+    - Typography & Box Effects: typography.md
+    
+  - 🖼️ Objects & Interactivity:
+    - Interactive MS Word Forms: interactive-forms.md
+    - Images & Floating Badges: media-layouts.md
+    
+  - 🛠️ Developer Resources:
+    - Runtime Settings (API): configuration-api.md
+    - Crash Recovery & Debugging: troubleshooting.md

@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kritidocx"
+version = "0.1.0"
+authors = [
+  { name="KritiDocX Team", email="info@kritidocx.dev" },
+]
+description = "Professional HTML-to-Word generation engine."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
