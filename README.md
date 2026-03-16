@@ -1,4 +1,4 @@
-# 🚀 KritiDocX Engine 1.0
+# 🚀 KritiDocX 1.0
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/Status-Industrial%20Grade-success)](https://github.com/)
@@ -85,10 +85,8 @@ KritiDocX/
 Ensure you have Python 3.8+ installed.
 
 ```bash
-pip install -r requirements.txt
+pip install kritidocx
 ```
-
-*(Note: Soon to be available directly via `pip install kritidocx`!)*
 
 ---
 

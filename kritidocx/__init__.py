@@ -12,7 +12,7 @@ import sys
 import os
 
 # --- VERSIONING ---
-__version__ = "0.1.0"
+__version__ = "0.1.0.dev1"
 __author__ = "KritiDocX Team"
 
 # --- INTERNAL IMPORTS ---
@@ -68,5 +68,7 @@ def convert_document(
 __all__ = [
     'convert_document', 
     'Pipeline',
+    'KritiDocXError', 
+    'InputNotFoundError',
     '__version__'
 ]

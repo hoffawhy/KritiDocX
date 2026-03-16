@@ -131,24 +131,27 @@ class SystemLogger:
         """Sets up handlers (File Rotating & Console Stream)."""
         self._core_logger = logging.getLogger("MyDocX_Core")
         self._core_logger.setLevel(logging.DEBUG)
-        self._core_logger.propagate = False # Prevent double printing
-        self._core_logger.handlers = []     # Clean existing
+        self._core_logger.propagate = False 
+        self._core_logger.handlers =[]     
 
-        # A. File Handler (Rotating: Max 5MB, keep last 3 files)
-        log_file = os.path.join(self.log_dir, f"session_latest.log")
-        fh = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=3, encoding='utf-8')
-        fh.setFormatter(logging.Formatter(
-            '%(asctime)s | %(levelname)-8s | %(message)s', 
-            datefmt='%H:%M:%S'
-        ))
-        
-        # B. Console Handler (Standard Output)
+        # A. File Handler (केवल तभी बनाएँ जब log_dir मौजूद हो)
+        if self.log_dir:
+            try:
+                log_file = os.path.join(self.log_dir, "session_latest.log")
+                fh = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=3, encoding='utf-8')
+                fh.setFormatter(logging.Formatter(
+                    '%(asctime)s | %(levelname)-8s | %(message)s', 
+                    datefmt='%H:%M:%S'
+                ))
+                self._core_logger.addHandler(fh)
+            except Exception:
+                pass # अगर Vercel पर फाइल बनाने में कोई एरर आये तो इग्नोर करें
+
+        # B. Console Handler (Standard Output) - यह हमेशा काम करेगा
         ch = logging.StreamHandler()
         ch.setFormatter(logging.Formatter('%(message)s'))
-        
-        self._core_logger.addHandler(fh)
         self._core_logger.addHandler(ch)
-
+        
     # =========================================================================
     # 🌲 HIERARCHY & INDENTATION UTILS
     # =========================================================================
