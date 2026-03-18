@@ -8,13 +8,21 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="kritidocx",  # पैकेज का नाम (pip install kritidocx)
-    version="0.1.0.dev6",
+    version="0.1.0.dev7",
     author="KritiDocX Team",
     author_email="kritidocx@gmail.com",
     description="A Pro-Level HTML to DOCX Converter with Math/Latex Support.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/hoffawhy/KritiDocX",
+    
+    project_urls={
+        "Documentation": "https://hoffawhy.github.io/KritiDocX/",
+        "Live Demo (Test)": "https://kritidocx.hoffawhy.com",
+        "Source Code": "https://github.com/hoffawhy/KritiDocX",
+        "Bug Tracker": "https://github.com/hoffawhy/KritiDocX/issues",
+    },
+
     
     # 🕵️ Source Finding Logic
     packages=find_packages(),

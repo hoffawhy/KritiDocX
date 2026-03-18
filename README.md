@@ -1,9 +1,12 @@
-# 🚀 KritiDocX 0.1.0.dev6
+# 🚀 KritiDocX 0.1.0.dev7
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/Status-Industrial%20Grade-success)](https://github.com/)
 [![Built With](https://img.shields.io/badge/Built%20With-Google%20AI%20Studio-orange)](https://deepmind.google/technologies/gemini/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
+[![Documentation](https://img.shields.io/badge/📖_Docs-Read_Here-blue?style=for-the-badge)](https://hoffawhy.github.io/KritiDocX/)
+[![Live Test](https://img.shields.io/badge/🧪_Live_Demo-Try_It-success?style=for-the-badge)](https://kritidocx.hoffawhy.com)
 
 **KritiDocX** is a powerful, industrial-strength **"Document Compiler"** designed to convert complex HTML and Markdown into high-fidelity Microsoft Word (`.docx`) reports.
 
@@ -78,6 +81,10 @@ KritiDocX/
 ```
 
 ---
+
+## 🔗 Useful Links
+*   **📖 Official Documentation:** [hoffawhy.github.io/KritiDocX](https://hoffawhy.github.io/KritiDocX/) (Detailed guides, architecture, and API ref)
+*   **🧪 Live Playground:** [kritidocx.hoffawhy.com](https://kritidocx.hoffawhy.com) (Test the engine right in your browser!)
 
 ## 🚀 Quick Start
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kritidocx"
-version = "0.1.0.dev6"
+version = "0.1.0.dev7"
 authors = [
   { name="KritiDocX Team", email="kritidocx@gmail.com" },
 ]
@@ -24,3 +24,9 @@ dependencies = [
     "psutil>=5.8.0",
     "latex2mathml>=1.9.0"
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/hoffawhy/KritiDocX"
+"Documentation" = "https://hoffawhy.github.io/KritiDocX/"
+"Live Demo" = "https://kritidocx.hoffawhy.com"
+"Bug Tracker" = "https://github.com/hoffawhy/KritiDocX/issues"

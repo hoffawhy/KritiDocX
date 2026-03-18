@@ -3,6 +3,10 @@
 --------------------
 Convert HTML and Markdown into high-fidelity Microsoft Word documents.
 
+
+🌐 Docs: https://hoffawhy.github.io/KritiDocX/
+🧪 Test Online: https://kritidocx.hoffawhy.com
+
 Usage:
     from kritidocx import convert_document
     convert_document("input.html", "output.docx")
@@ -12,7 +16,7 @@ import sys
 import os
 
 # --- VERSIONING ---
-__version__ = "0.1.0.dev6"
+__version__ = "0.1.0.dev7"
 __author__ = "KritiDocX Team"
 
 # --- INTERNAL IMPORTS ---

@@ -61,6 +61,7 @@ plugins:
 nav:
   - Welcome (Home): index.md
   - Installation & Basics: getting-started.md
+  - 🧪 Live Demo (Try It!): https://kritidocx.hoffawhy.com
   
   - 💎 Core Features:
     - The Hybrid Template Engine: hybrid-mode.md
