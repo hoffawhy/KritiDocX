@@ -47,12 +47,17 @@ class AppConfig:
     # 2. ⚙️ ENGINE BEHAVIOR (इंजन व्यवहार)
     # =========================================================================
     
-    # Debug Mode: True होने पर कंसोल में विस्तार से जानकारी प्रिंट होगी
-    # Production में इसे False रखें।
+    # Debug Mode: True होने पर कंसोल में बहुत बारीक डिटेल्स (Tracing) दिखेंगी।
     DEBUG = False
     
-    # यदि True, तो प्रोग्राम एरर आने पर बंद नहीं होगा, बल्कि लॉग करके आगे बढ़ेगा (Soft Fail)
+    # Console Log Level (SILENT BY DEFAULT)
+    # विकल्प (Options): 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL', 'CRITICAL_ONLY', या 'NONE'
+    # प्रोडक्शन लाइब्रेरी के लिए 'ERROR' या 'CRITICAL' बेस्ट है।
+    LOG_LEVEL = 'CRITICAL' 
+
+    # यदि True, तो प्रोग्राम एरर आने पर बंद नहीं होगा (Soft Fail)
     CONTINUE_ON_ERROR = False
+
     
     # क्रैश होने पर JSON डंप बनाना है या नहीं?
     ENABLE_CRASH_DUMPS = False

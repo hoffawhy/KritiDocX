@@ -12,7 +12,7 @@ import sys
 import os
 
 # --- VERSIONING ---
-__version__ = "0.1.0.dev3"
+__version__ = "0.1.0.dev4"
 __author__ = "KritiDocX Team"
 
 # --- INTERNAL IMPORTS ---

@@ -128,10 +128,37 @@ class SystemLogger:
         self.info(f"🚀 System Logger Initialized (Session: {self.session_id})")
 
     def _setup_internal_logger(self):
-        """Sets up handlers (File Rotating & Console Stream)."""
+        """Sets up handlers (File Rotating & Console Stream) based on Settings."""
         self._core_logger = logging.getLogger("MyDocX_Core")
-        self._core_logger.setLevel(logging.DEBUG)
         self._core_logger.propagate = False 
+        self._core_logger.handlers = []     
+
+        # 1. 🛡️ Determine the Log Level based on Config
+        import logging # Ensure logging is accessible
+        
+        target_level = logging.CRITICAL # डिफ़ॉल्ट (अत्यधिक शांत)
+
+        # अगर कॉन्फिग लोड हो चुका है
+        if AppConfig:
+            level_str = getattr(AppConfig, 'LOG_LEVEL', 'CRITICAL').upper()
+            
+            # मैपिंग (Mapping the string to actual logging level)
+            if level_str == 'DEBUG' or getattr(AppConfig, 'DEBUG', False):
+                target_level = logging.DEBUG
+                self.trace_enabled = True
+            elif level_str == 'INFO':
+                target_level = logging.INFO
+            elif level_str == 'WARNING':
+                target_level = logging.WARNING
+            elif level_str == 'ERROR':
+                target_level = logging.ERROR
+            elif level_str == 'NONE' or level_str == 'CRITICAL':
+                target_level = logging.CRITICAL
+                # अगर NONE है तो हम एक और लेयर का म्यूट कर सकते हैं 
+                # (अभी के लिए CRITICAL पर्याप्त है जो INFO को रोक देगा)
+
+        # लॉगर का स्तर सेट करें
+        self._core_logger.setLevel(target_level)
         self._core_logger.handlers =[]     
 
         # A. File Handler (केवल तभी बनाएँ जब log_dir मौजूद हो)
