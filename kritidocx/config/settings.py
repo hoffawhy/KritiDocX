@@ -24,20 +24,20 @@ class AppConfig:
     INTERNAL_ASSETS_DIR = os.path.join(PACKAGE_ROOT, "assets")
 
     # ---------------------------------------------------------------
-    # 2. ⚡ RUNTIME PATHS (Dynamic & Safe)
+    # 2. ⚡ RUNTIME PATHS (Dynamic & Safe for Serverless)
     # ---------------------------------------------------------------
     
-    # TEMP CACHE: यूजर के प्रोजेक्ट फोल्डर में नहीं, बल्कि OS के Temp फोल्डर में बनेगा
-    # (e.g., C:\Users\Name\AppData\Local\Temp\kritidocx_cache)
+    # 🛑 Serverless/Vercel FIX: OS level guaranteed temporary directory mapping
+    # `tempfile.gettempdir()` ensures writing into safe areas like `/tmp` globally
     try:
         TEMP_DIR = os.path.join(tempfile.gettempdir(), "kritidocx_cache")
-    except:
-        # Fallback अगर सिस्टम परमिशन न दे
-        TEMP_DIR = os.path.join(os.getcwd(), ".kritidocx_tmp")
+    except Exception:
+        # Ultimate fail-safe (Will trigger exception handler locally if OS broken)
+        TEMP_DIR = None
 
-    # LOGGING: अगर डिबग ऑन है तो लॉग फोल्डर बनाने की कोशिश करें, वरना None रखें
-    LOG_DIR = os.path.join(os.getcwd(), "logs") if os.access(os.getcwd(), os.W_OK) else None
-    CRASH_DUMP_DIR = os.path.join(LOG_DIR, "crash_dumps") if LOG_DIR else None
+    # LOGGING: We won't block system start. Set default to working dir only if possible.
+    LOG_DIR = os.path.join(os.getcwd(), "logs")
+    CRASH_DUMP_DIR = os.path.join(LOG_DIR, "crash_dumps")
     
     # (INPUT और HTML फोल्डर्स की अब आवश्यकता नहीं है, वे runtime argument से आएंगे)
     # OUTPUT फोल्डर का डिफ़ॉल्ट path यूज़र का करंट वर्किंग डायरेक्टरी होगा
@@ -140,22 +140,27 @@ class AppConfig:
         Does NOT touch user input/output structures.
         """
         try:
-            # केवल टेम्परेरी फोल्डर बनाना जरूरी है
-            if not os.path.exists(AppConfig.TEMP_DIR):
+            # 🛑 VERCEL SAFE-CHECK: /tmp directory creation (Avoid making .tmp files act as directories)
+            if AppConfig.TEMP_DIR and not os.path.exists(AppConfig.TEMP_DIR):
                 os.makedirs(AppConfig.TEMP_DIR, exist_ok=True)
             
-            # यदि डिबग मोड ऑन है और हम Logs बना रहे हैं
+            # Log dirs attempts (Silent handling in Read-Only spaces)
             if AppConfig.DEBUG and AppConfig.LOG_DIR:
+                # Do NOT create logging directory directly in standard flow for read-only setups
                 if not os.path.exists(AppConfig.LOG_DIR):
-                    os.makedirs(AppConfig.LOG_DIR, exist_ok=True)
-                    
+                    try:
+                         os.makedirs(AppConfig.LOG_DIR, exist_ok=True)
+                    except PermissionError:
+                         AppConfig.LOG_DIR = None
+                         AppConfig.CRASH_DUMP_DIR = None # Cancel dumps
+
             return True
-        except OSError:
-            # साइलेंट फेलियर: अगर हम फोल्डर नहीं बना सकते, तो कैशिंग डिसेबल हो जाएगी, 
-            # लेकिन प्रोग्राम क्रैश नहीं होगा।
+            
+        except (PermissionError, OSError) as e:
+            # 🛑 CRITICAL SERVERLESS FIX: Fail silently, but cleanly disconnect variables causing crashes later
+            AppConfig.TEMP_DIR = None
             return False
-        
-        
+           
     @classmethod
     def override(cls, user_config):
         """

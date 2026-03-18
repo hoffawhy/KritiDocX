@@ -1,4 +1,4 @@
-# 🚀 KritiDocX 0.1.0.dev5
+# 🚀 KritiDocX 0.1.0.dev6
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![Status](https://img.shields.io/badge/Status-Industrial%20Grade-success)](https://github.com/)

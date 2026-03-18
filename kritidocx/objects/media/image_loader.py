@@ -27,8 +27,11 @@ from PIL import Image, ImageDraw, ImageFont, UnidentifiedImageError
 
 from kritidocx.config.settings import AppConfig
 # If we have a central logger, use it. Else use standard.
+import warnings
+import urllib3  # इसे सीधे इम्पोर्ट करें
 
-
+# SSL वार्निंग को म्यूट करें
+warnings.simplefilter('ignore', urllib3.exceptions.InsecureRequestWarning)
     
 try:
     from kritidocx.utils.logger import logger
@@ -147,6 +150,9 @@ class ImageLoader:
             path = cls._cache[url_hash]
             if os.path.exists(path):
                 return path
+            else:
+                # यदि फाइल सिस्टम पर नहीं है, तो उसे कैश मेमोरी से भी तुरंत डिलीट करें
+                del cls._cache[url_hash]
 
         # 2. Setup Request
         try:
@@ -167,15 +173,28 @@ class ImageLoader:
             elif 'bmp' in content_type: ext = '.bmp'
             elif 'svg' in content_type: return None # SVG Not supported directly in python-docx yet
             
-            # 4. Save to Temp
-            # (Note: tempfile usually creates unique name)
-            fd, tmp_path = tempfile.mkstemp(prefix=f"web_img_{url_hash[:6]}_", suffix=ext, dir=AppConfig.TEMP_DIR)
+            # 4. Save to Temp (Safe Dir checking)
+            safe_temp_dir = AppConfig.TEMP_DIR if os.path.exists(AppConfig.TEMP_DIR) else None
+            fd, tmp_path = tempfile.mkstemp(prefix=f"web_img_{url_hash[:6]}_", suffix=ext, dir=safe_temp_dir)
             with os.fdopen(fd, 'wb') as f:
                 f.write(response.content)
             
-            # 5. Store in Cache
+            # 5. Store in Cache (Secured against infinite RAM growth)
             if AppConfig.CACHE_DOWNLOADED_IMAGES:
                 cls._cache[url_hash] = tmp_path
+                
+                # 🛑 MEMORY OPTIMIZATION: कैश में केवल ताज़ा 50 या 100 फाइलें ही रहने दें
+                if len(cls._cache) > 100:
+                    # Python 3.7+ में डिक्शनरी क्रम बनाए रखती है। सबसे पहली Key 'Oldest' होती है।
+                    oldest_key = next(iter(cls._cache))
+                    old_path = cls._cache.pop(oldest_key)
+                    
+                    # फालतू फाइल को डिस्क (Server /tmp) से भी उड़ा दें ताकि स्पेस खाली रहे
+                    try:
+                        if os.path.exists(old_path):
+                            os.remove(old_path)
+                    except Exception:
+                        pass
                 
             return tmp_path
 
@@ -217,7 +236,8 @@ class ImageLoader:
             # Use strict alphanumeric only for filename safety (avoid Windows path issues)
             safe_hash = hashlib.md5(img_data).hexdigest()[:10]
             
-            fd, tmp_path = tempfile.mkstemp(prefix=f"b64_{safe_hash}_", suffix=".png", dir=AppConfig.TEMP_DIR)
+            safe_temp_dir = AppConfig.TEMP_DIR if os.path.exists(AppConfig.TEMP_DIR) else None
+            fd, tmp_path = tempfile.mkstemp(prefix=f"b64_{safe_hash}_", suffix=".png", dir=safe_temp_dir)
             with os.fdopen(fd, 'wb') as f:
                 f.write(img_data)
                 

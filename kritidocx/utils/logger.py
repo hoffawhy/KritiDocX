@@ -99,9 +99,10 @@ class SystemLogger:
             self.dump_dir = AppConfig.CRASH_DUMP_DIR
             self.trace_enabled = getattr(AppConfig, 'DEBUG', True)
 
-        # --- NEW PLACEMENT ---
         # 2. Log Dir Resolution (सुरक्षित लॉगिंग)
-        if not os.path.exists(self.log_dir):
+        # Check if self.log_dir is not None before passing to os.path.exists
+        if self.log_dir and not os.path.exists(self.log_dir):
+
             try:
                 # केवल तभी फोल्डर बनाएं अगर 'DEBUG' मोड ऑन हो (Development में)
                 # लाइब्रेरी के रूप में चलते समय यह यूजर की मशीन पर कचरा नहीं करेगा
@@ -296,6 +297,10 @@ class SystemLogger:
         """
         Generates a JSON file capturing the state during an exception.
         """
+        # 🛑 BUG FIX: If dump_dir is None (like in Vercel), abort writing local dump file
+        if not self.dump_dir:
+            return "[Dump Aborted: Read-Only Env]"
+
         timestamp = datetime.now().strftime("%H%M%S")
         filename = f"CRASH_{timestamp}.json"
         full_path = os.path.join(self.dump_dir, filename)

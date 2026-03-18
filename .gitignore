@@ -57,5 +57,5 @@ ai_request.json
 files_context.txt
 project_map.txt
 project_packer.py
-
+PROJECT_SOURCE_DUMP.txt
 # (इन्हें हमने सिर्फ कोडिंग में मदद के लिए बनाया था, public करने की जरुरत नहीं है)
