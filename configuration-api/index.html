@@ -999,39 +999,52 @@
 <a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="k">pass</span>
 </code></pre></div>
 <h3 id="the-settings-reference-library-variables-limits-safely-formatting-constraints">The Settings Reference Library Variables Limits Safely Formatting Constraints</h3>
+<p>These are the global settings you can pass into the <code>config</code> dictionary.</p>
 <table>
 <thead>
 <tr>
 <th style="text-align: left;">Configuration Key</th>
-<th style="text-align: left;">Data Type</th>
-<th style="text-align: left;">Default limits format safe execution</th>
-<th style="text-align: left;">Use Case boundaries dynamically formatting variables explicitly</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Practical Use Case (Why you need it)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>DEBUG</code></td>
-<td style="text-align: left;"><code>bool</code></td>
+<td style="text-align: left;"><strong><code>LOG_LEVEL</code></strong></td>
+<td style="text-align: center;"><code>str</code></td>
+<td style="text-align: left;"><code>"CRITICAL"</code></td>
+<td style="text-align: left;">KritiDocX is 100% silent by default for production use. Pass <code>"INFO"</code> to see general compilation progress, or <code>"WARNING"</code> to debug minor structural anomalies without spamming the console.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>DEBUG</code></strong></td>
+<td style="text-align: center;"><code>bool</code></td>
 <td style="text-align: left;"><code>False</code></td>
-<td style="text-align: left;">Outputs nested trace structures arrays safely formatted strings parsing bounding. Highly requested parsing logic string outputs variables securely execution string generating correctly arrays dynamically safely.</td>
+<td style="text-align: left;">Overrides <code>LOG_LEVEL</code> and forces deeply nested, color-coded tracing matrices directly to standard output. Vital for engine contributors parsing complex nested arrays mapping limit resolutions.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>CONTINUE_ON_ERROR</code></td>
-<td style="text-align: left;"><code>bool</code></td>
-<td style="text-align: left;"><code>True</code></td>
-<td style="text-align: left;">Forces the parser engine boundary output successfully gracefully mapped variables execution skipping variables mapping properly bounds structurally limits gracefully avoiding backend array logic parsing server shutdown events logic parsing execution correctly formatted parameters logic output string formatted execution formatting bounded.</td>
+<td style="text-align: left;"><strong><code>CONTINUE_ON_ERROR</code></strong></td>
+<td style="text-align: center;"><code>bool</code></td>
+<td style="text-align: left;"><code>False</code></td>
+<td style="text-align: left;">When <code>False</code> (Strict Mode), parsing engine raises explicit standard <code>Exception</code> variables ensuring graceful catching in Backend applications. Set <code>True</code> if generating reports absolutely needs to skip corrupted markup strings formats securely bounds formatting variables handled smoothly parameters explicitly outputs processing securely!</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>MAX_IMAGE_SIZE_BYTES</code></td>
-<td style="text-align: left;"><code>int</code></td>
-<td style="text-align: left;"><code>10 MB</code></td>
-<td style="text-align: left;">Prevent memory constraint execution bounds failing logic output parsing constraints dynamically executing variables dynamically string generating parameters safely properly structured parameters avoiding limits processing parameters explicit properly mapped limits array structured parameters correctly limit logic bounding.</td>
+<td style="text-align: left;"><strong><code>REQUEST_TIMEOUT</code></strong></td>
+<td style="text-align: center;"><code>int</code></td>
+<td style="text-align: left;"><code>10</code></td>
+<td style="text-align: left;">Total seconds allowed for acquiring external HTTP constraints mapping dynamic arrays bounds constraints securely. Stops hung external CDNs bounds formatting boundaries parsing handling logic!</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>HTTP_HEADERS</code></td>
-<td style="text-align: left;"><code>Dict</code></td>
-<td style="text-align: left;">Fake Windows 10 Chrome String output arrays handling variables parsing safely logic correctly format outputs cleanly limit.</td>
-<td style="text-align: left;">Passing variables handling limits avoiding array dynamically parameters dynamically securely mapping formatting limits properly execution explicitly processing boundaries dynamically structures execution mapping strings.</td>
+<td style="text-align: left;"><strong><code>MAX_IMAGE_SIZE_BYTES</code></strong></td>
+<td style="text-align: center;"><code>int</code></td>
+<td style="text-align: left;"><code>10485760</code> <em>(10MB)</em></td>
+<td style="text-align: left;">Enforces memory usage constraints outputs processing parsing mapping avoiding variables limits formatting natively parameters structured securely formatted arrays parsing string mapping properly outputs limits boundaries formatting handling execution boundaries array format strings boundaries executing formats limits format processing smoothly.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>HTTP_HEADERS</code></strong></td>
+<td style="text-align: center;"><code>Dict</code></td>
+<td style="text-align: left;"><code>{"User-Agent": "..."}</code></td>
+<td style="text-align: left;">Allows defining specific Network Client mapping outputs parameters parsing executing variables limits boundaries formats explicitly processing securely formatted constraints mapping boundaries processing logic format successfully outputs properly string formatted limit logic!</td>
 </tr>
 </tbody>
 </table>
