@@ -52,7 +52,7 @@ class AppConfig:
     DEBUG = False
     
     # यदि True, तो प्रोग्राम एरर आने पर बंद नहीं होगा, बल्कि लॉग करके आगे बढ़ेगा (Soft Fail)
-    CONTINUE_ON_ERROR = True
+    CONTINUE_ON_ERROR = False
     
     # क्रैश होने पर JSON डंप बनाना है या नहीं?
     ENABLE_CRASH_DUMPS = False
@@ -108,7 +108,7 @@ class AppConfig:
     
     # फाइल बनने के बाद क्या उसे अपने आप खोलना है? (Windows/Mac Only)
     # सर्वर पर इसे False रखें।
-    AUTO_OPEN_FILE = True
+    AUTO_OPEN_FILE = False
     
     # अगर फाइल पहले से मौजूद है, तो क्या उसे ओवरराइट करें?
     # False होने पर नया नाम (Report_1.docx) जनरेट होगा।

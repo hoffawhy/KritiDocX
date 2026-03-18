@@ -394,9 +394,13 @@ class TableController:
                     # 3. फिजिकल नोड को डिलीट करें
                     node_to_remove = current_tcs[del_idx]
                     tr_element.remove(node_to_remove)
-                    print(f"      ✅ Deleted XML Cell at index: {del_idx}") # NEW LOG
+                    if getattr(AppConfig, 'DEBUG_TABLES', False):
+                        logger.debug(f"      ✅ Deleted XML Cell at index: {del_idx}")
+
                 else:
-                    print(f"      ⚠️ SKIP: index {del_idx} out of range!") # NEW LOG
+                    if getattr(AppConfig, 'DEBUG_TABLES', False):
+                        logger.debug(f"      ⚠️ SKIP: index {del_idx} out of range!")
+
         else:
             # --- [NEW LOG] ---
             logger.debug(f"   ✨ Row {r_idx}: No cleanup required.")   
